@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #fdfdfd;
+  overflow-x: hidden;
+  padding: 20px 60px;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo { font-size: 22px; font-weight: 800; }
+nav a { text-decoration: none; color: #000; margin: 0 15px; font-size: 14px; font-weight: 500; }
+
+
+.main-title {
+  text-align: center;
+  font-size: 64px;
+  font-weight: 800;
+  margin: 40px 0;
+  line-height: 1.1;
+}
+
+
+.grid-wrapper {
+  display: grid;
+  
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+  align-items: end; 
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.card {
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+
+.orange-card { height: 220px; background: #ffb347; }
+.beige-card  { height: 160px; background: #e3d5b8; }
+.teal-card   { height: 220px; background: #1fb9b9; }
+.yellow-card { height: 480px; background: #ffd700; } 
+.purple-card { height: 220px; background: #6a0dad; }
+.blue-card   { height: 160px; background: #00a8ff; }
+.mint-card   { height: 220px; background: #a8e4a0; }
+
+.tall { height: 500px; }
+
+
+.explore-circle {
+  position: absolute;
+  top: -40px;
+  right: 50px;
+  width: 110px;
+  height: 110px;
+  border: 1px dashed #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+  padding: 10px;
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+
+.footer-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 50px;
+  padding: 0 40px;
+}
+
+.quote-box { max-width: 350px; }
+.quote-box p { font-size: 14px; line-height: 1.6; font-style: italic; }
+.sig { font-family: 'Dancing Script', cursive; margin-top: 10px; border-bottom: 3px solid #ffd700; display: inline-block; }
+
+.scroll-btn {
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.blog-info { text-align: right; }
+.blog-info p { font-size: 12px; color: #777; }
+.year-tag { position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); font-weight: bold; }
