@@ -100,16 +100,6 @@ hr {
 }
 
 
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 2px;
-    background: var(--primary-color);
-}
-
 .card h2 {
     font-size: 1.25rem;
     font-weight: 700;
@@ -411,7 +401,7 @@ input:focus, select:focus {
     text-transform: uppercase;
     margin: 2rem 0;
     font-weight: 700;
-    color: var(--border-color);
+    color: var(--text-color);
 }
 
  /* ANIMATIONS DEFINTIONS */
