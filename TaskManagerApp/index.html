@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Task Manager By qazi</h1>
+        <button id="theme-toggle" class="btn">Toggle Theme</button>
+    </header>
+
+    <main class="container">
+        <section class="card creator-section">
+            <h2>Create a Task</h2>
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Task Title</label>
+                    <input type="text" id="task-title" value="New Task Idea" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-category">Category</label>
+                    <select id="task-category">
+                        <label>Categories</label>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" id="add-task-btn">Add Task</button>
+            </form>
+            <div class="demo-buttons">
+                <button id="demo-attr-prop" class="btn btn-secondary">Demo: Attr vs Prop (Console)</button>
+            </div>
+        </section>
+
+        <section class="stats-filter-container">
+            <div class="card stats">
+                <p>Pending: <span id="pending-count">0</span> | Completed: <span id="completed-count">0</span></p>
+            </div>
+            <div class="filters">
+                <input type="text" id="search-input" placeholder="Search tasks...">
+                <select id="filter-category">
+                    <option value="all">All Categories</option>
+                    <option value="work">Work</option>
+                    <option value="personal">Personal</option>
+                    <option value="urgent">Urgent</option>
+                </select>
+                <button id="clear-all-btn" class="btn btn-danger">Clear All</button>
+            </div>
+        </section>
+
+        <section class="task-container">
+            <h2>Your Tasks</h2>
+            <div id="task-list">
+                </div>
+        </section>
+
+        <hr>
+
+        <section class="card propagation-section">
+            <h2>Event Propagation Demo</h2>
+            <p>Click the child button to view Bubble vs Capture logs in the console.</p>
+            <div id="grandparent" class="prop-box">
+                <span class="box-label">Grandparent</span>
+                <div id="parent" class="prop-box">
+                    <span class="box-label">Parent</span>
+                    <button id="child-btn" class="btn">Child Button</button>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="card pipeline-section">
+            <h2>Browser Rendering Pipeline Diagram</h2>
+            <div class="pipeline-flow">
+                <div class="pipeline-branch">
+                    <div class="pipeline-node html-node">
+                        <h3>HTML</h3>
+                        <p>Raw bytes received from server.</p>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="pipeline-node html-node">
+                        <h3>Parsing</h3>
+                        <p>Characters turned into tokens.</p>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="pipeline-node html-node">
+                        <h3>Tokenization</h3>
+                        <p>Tokens converted into Nodes.</p>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="pipeline-node tree-node">
+                        <h3>DOM Tree</h3>
+                        <p>Object representation of HTML.</p>
+                    </div>
+                </div>
+
+                <div class="pipeline-connector-plus">+</div>
+
+                <div class="pipeline-branch">
+                    <div class="pipeline-node css-node">
+                        <h3>CSS</h3>
+                        <p>Stylesheets downloaded and read.</p>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="pipeline-node tree-node">
+                        <h3>CSSOM Tree</h3>
+                        <p>Object representation of styles.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow-down-large">↓↓ Combined Together ↓↓</div>
+
+            <div class="pipeline-final">
+                <div class="pipeline-node render-node">
+                    <h3>Render Tree</h3>
+                    <p>Combines DOM and CSSOM. Only contains visible elements needed to paint the screen.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
