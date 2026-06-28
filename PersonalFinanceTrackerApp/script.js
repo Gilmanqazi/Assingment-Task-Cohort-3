@@ -588,7 +588,7 @@ function updateChart() {
 
     chart = new Chart(ctx, {
 
-        type: "doughnut",
+        type: "pie",
 
         data: {
 
