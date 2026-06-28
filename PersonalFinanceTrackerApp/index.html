@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack Pro</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+             darkMode: "class"
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+
+<!-- Loading Overlay Container -->
+<div id="loadingOverlay" class="fixed inset-0 z-[100] bg-space-900/80 backdrop-blur-md flex flex-col items-center justify-center transition-opacity duration-500">
+    
+    <!-- Outer Glow Box -->
+    <div class="relative flex flex-col items-center">
+        <!-- Number Counter -->
+        <span id="loadingCounter" class="text-7xl font-black text-black tracking-tighter ">
+            0%
+        </span>
+        
+        <!-- Witty Subtext -->
+        <p class="text-xx font-bold text-slate-500 font-medium uppercase tracking-widest mt-3 animate-pulse">
+            Calculating Your Financial Mistakes...
+        </p>
+    </div>
+    
+</div>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300">
+
+<div class="flex min-h-screen overflow-x-hidden">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside id="sidebar"
+        class="fixed lg:static left-0 top-0 z-50 w-64 h-screen bg-white dark:bg-slate-900 border-r -translate-x-full border-slate-200/80 dark:border-slate-800/80  lg:translate-x-0 transition duration-300 shadow-sm flex flex-col justify-between">
+
+        <div>
+            <!-- Logo Section -->
+            <div class="flex items-center gap-3 p-6 border-b border-slate-100 dark:border-slate-800">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center shadow-md shadow-blue-500/20">
+                    <i class="fas fa-wallet text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg tracking-tight text-slate-900 dark:text-white">HisaabKitaab Bot</h1>
+                    <p class="text-slate-400 dark:text-slate-500 text-xs font-medium">Tracking Your Mistakes in Real-Time</p>
+                </div>
+            </div>
+
+            <!-- MENU -->
+            <nav class="p-4 space-y-1.5">
+                <button id="dashboardBtn"
+                    class="w-full flex items-center gap-3 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-semibold px-4 py-3 rounded-xl transition-all duration-200">
+                    <i class="fa-solid fa-table-columns text-sm"></i>
+                    <span class="text-sm">Dashboard</span>
+                </button>
+
+                <button id="settingsBtn"
+                    class="w-full flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-slate-200 font-medium px-4 py-3 rounded-xl transition-all duration-200">
+                    <i class="fa-solid fa-gear text-sm"></i>
+                    <span class="text-sm">Settings</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Bottom Button -->
+        <div class="p-4 w-full">
+            <button id="openModal"
+                class="w-full flex items-center justify-center gap-2 bg-slate-900 dark:bg-blue-600 text-white font-medium py-3 px-4 rounded-xl hover:bg-slate-800 dark:hover:bg-blue-700 shadow-sm transition-all duration-200 active:scale-[0.98]">
+                <i class="fa-solid fa-plus text-sm"></i>
+                <span class="text-sm">Add Transaction</span>
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- Overlay -->
+    <div id="overlay" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 lg:hidden"></div>
+
+    <!-- ================= CONTENT ================= -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+        <!-- TOP NAVBAR -->
+        <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 h-16 sticky top-0 z-30 flex items-center justify-between px-6 transition-colors">
+            <div class="flex items-center gap-4">
+                <!-- Mobile -->
+                <button id="menuBtn" class="lg:hidden text-xl text-slate-600 dark:text-slate-300 p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2 class="font-bold text-lg text-slate-800 dark:text-white tracking-tight">Dashboard</h2>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <span id="userName" class="font-medium text-sm text-slate-700 dark:text-slate-200"></span>
+                <button id="logoutBtn"
+                    class="border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2 text-sm font-medium hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-600 hover:border-red-200 dark:hover:border-red-900/50 text-slate-600 dark:text-slate-300 transition-all duration-200">
+                    <i class="fa-solid fa-right-from-bracket mr-2 text-xs"></i>Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main id="dashboardPage" class="p-6 max-w-[1600px] w-full mx-auto space-y-6">
+
+            <!-- Heading -->
+            <div>
+                <h1 class="text-2xl lg:text-3xl font-bold tracking-tight text-slate-950 dark:text-white">Financial Overview</h1>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Real-time tracking application</p>
+            </div>
+
+            <!-- CARDS -->
+            <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
+
+                <!-- Balance -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/60 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200">
+                    <div class="flex items-center justify-between">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Current Balance</p>
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                            <i class="fas fa-building-columns text-sm"></i>
+                        </div>
+                    </div>
+                    <h2 id="balance" class="text-2xl lg:text-3xl font-bold mt-4 tracking-tight text-slate-900 dark:text-white">$0.00</h2>
+                </div>
+
+                <!-- Income -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/60 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200">
+                    <div class="flex items-center justify-between">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Income</p>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                            <i class="fas fa-arrow-trend-up text-sm"></i>
+                        </div>
+                    </div>
+                    <h2 id="income" class="text-2xl lg:text-3xl font-bold mt-4 tracking-tight text-emerald-600 dark:text-emerald-400">$0.00</h2>
+                </div>
+
+                <!-- Expense -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/60 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200">
+                    <div class="flex items-center justify-between">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Expense</p>
+                        <div class="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 flex items-center justify-center">
+                            <i class="fas fa-arrow-trend-down text-sm"></i>
+                        </div>
+                    </div>
+                    <h2 id="expense" class="text-2xl lg:text-3xl font-bold mt-4 tracking-tight text-rose-600 dark:text-rose-400">$0.00</h2>
+                </div>
+
+                <!-- Transactions -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/60 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200">
+                    <div class="flex items-center justify-between">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Transactions</p>
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                            <i class="fas fa-receipt text-sm"></i>
+                        </div>
+                    </div>
+                    <h2 id="totalTransactions" class="text-2xl lg:text-3xl font-bold mt-4 tracking-tight text-slate-900 dark:text-white">0</h2>
+                </div>
+
+            </div>
+
+            <!-- ================= CHART + PREFERENCES ================= -->
+            <div class="grid xl:grid-cols-3 gap-6">
+
+                <!-- Cash Flow -->
+                <div class="xl:col-span-2 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm">
+                    <h2 class="text-lg font-bold mb-4 tracking-tight text-slate-900 dark:text-white">Cash Flow Analysis</h2>
+                    <div class="h-80 relative">
+                        <canvas id="financeChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Preferences -->
+                <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-lg font-bold mb-6 tracking-tight text-slate-900 dark:text-white">Preferences</h2>
+
+                        <!-- Dark Mode -->
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="font-medium text-sm text-slate-700 dark:text-slate-300">Dark & Light Mode</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input id="darkToggle" type="checkbox" class="sr-only peer w-full border rounded-xl p-3 bg-white dark:bg-slate-700 text-black dark:text-white border-gray-300 dark:border-slate-600">
+                                <div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 rounded-full peer peer-checked:bg-blue-600 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:h-5 after:w-5 after:rounded-full after:transition-all peer-checked:after:translate-x-5 shadow-inner"></div>
+                            </label>
+                        </div>
+
+                        <!-- Currency -->
+                        <div class="mb-5">
+                            <label class="block mb-2 text-sm font-medium text-slate-700 dark:text-slate-300">Currency</label>
+                            <select id="currency" class="w-full border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                                <option value="USD">USD ($)</option>
+                                <option value="INR">INR (₹)</option>
+                                <option value="EUR">EUR (€)</option>
+                                <option value="GBP">GBP (£)</option>
+                                <option value="JPY">JPY (¥)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Reset -->
+                    <button id="resetBtn" class="w-full border border-rose-200 dark:border-rose-950/40 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/20 font-medium text-sm rounded-xl py-2.5 transition-colors duration-200">
+                        <i class="fas fa-trash mr-2 text-xs"></i>Reset All Data
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- ================= TRANSACTIONS ================= -->
+            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm">
+                
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
+                    <h2 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">All Transactions</h2>
+                    <button id="openModal2" class="lg:hidden flex items-center justify-center gap-2 bg-slate-900 dark:bg-blue-600 text-white text-sm font-medium px-4 py-2.5 rounded-xl">
+                        <i class="fas fa-plus text-xs"></i>Add
+                    </button>
+                </div>
+
+                <!-- Search & Filter -->
+                <div class="grid sm:grid-cols-3 gap-3 mb-5">
+                    <div class="relative sm:col-span-2">
+                        <i class="fas fa-search absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                        <input id="search" type="text" placeholder="Search transactions..."
+                            class="w-full border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                    </div>
+
+                    <select id="filterType" class="border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                        <option value="all">All Types</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+
+                <!-- Table -->
+                <div class="overflow-x-auto rounded-xl border border-slate-100 dark:border-slate-800/60">
+                    <table class="w-full text-sm text-left">
+                        <thead>
+                            <tr class="bg-slate-50/70 dark:bg-slate-800/40 border-b border-slate-100 dark:border-slate-800 text-slate-500 dark:text-slate-400 font-medium">
+                                <th class="py-3 px-4">Date</th>
+                                <th class="py-3 px-4">Description</th>
+                                <th class="py-3 px-4">Category</th>
+                                <th class="py-3 px-4">Amount</th>
+                                <th class="py-3 px-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTable" class="divide-y divide-slate-100 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
+                            <!-- JavaScript Data Insertion -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- ================= SETTINGS PAGE ================= -->
+        <section id="settingsPage" class="hidden p-6 max-w-[1600px] w-full mx-auto">
+            <div class="max-w-2xl bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 p-6 shadow-sm space-y-6">
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight text-slate-950 dark:text-white">Settings</h1>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Manage your account preferences</p>
+                </div>
+
+                <!-- Name -->
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Full Name</label>
+                    <input id="username" type="text" placeholder="Enter your name"
+                        class="w-full border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Email Address</label>
+                    <input type="email" placeholder="example@email.com"
+                        class="w-full border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                </div>
+
+                <!-- Currency -->
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Preferred Currency</label>
+                    <select id="settingCurrency" class="w-full border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                        <option>USD</option>
+                        <option>INR</option>
+                        <option>EUR</option>
+                        <option>GBP</option>
+                        <option>JPY</option>
+                    </select>
+                </div>
+
+                <!-- Theme -->
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Theme</label>
+                    <select class="w-full border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                        <option>Light</option>
+                        <option>Dark</option>
+                    </select>
+                </div>
+
+                <button id="stBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-xl shadow-md shadow-blue-500/10 transition-colors active:scale-[0.99]">
+                    Save Settings
+                </button>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<!-- ================= ADD TRANSACTION MODAL ================= -->
+<div id="transactionModal" class="fixed inset-0 bg-slate-950/40 backdrop-blur-sm hidden items-center justify-center z-50 p-4 animate-fade-in">
+    <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 overflow-hidden transform transition-all">
+        <!-- Header -->
+        <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 p-5">
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white">Add Transaction</h2>
+            <button id="closeModal" class="text-xl hover:text-rose-500 text-slate-400 dark:text-slate-500 transition-colors">
+                &times;
+            </button>
+        </div>
+
+        <!-- Form -->
+        <form id="transactionForm" class="p-5 space-y-4">
+            <!-- Type -->
+            <div>
+                <label class="block text-sm font-medium mb-1.5 text-slate-700 dark:text-slate-300">Type</label>
+                <select id="type" class="w-full border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none">
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label class="block text-sm font-medium mb-1.5 text-slate-700 dark:text-slate-300">Description</label>
+                <input id="description" type="text" placeholder="Enter description"
+                    class="w-full border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none">
+            </div>
+
+            <!-- Amount -->
+            <div>
+                <label class="block text-sm font-medium mb-1.5 text-slate-700 dark:text-slate-300">Amount</label>
+                <input id="amount" type="number" placeholder="0.00"
+                    class="w-full border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none">
+            </div>
+
+            <!-- Date -->
+            <div>
+                <label class="block text-sm font-medium mb-1.5 text-slate-700 dark:text-slate-300">Date</label>
+                <input id="date" type="date"
+                    class="w-full border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none">
+            </div>
+
+            <!-- Category -->
+            <div>
+                <label class="block text-sm font-medium mb-1.5 text-slate-700 dark:text-slate-300">Category</label>
+                <select id="category" class="w-full border border-slate-200 dark:border-slate-800 rounded-xl p-2.5 text-sm bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none">
+                    <option>Salary</option>
+                    <option>Food</option>
+                    <option>Shopping</option>
+                    <option>Bills</option>
+                    <option>Travel</option>
+                    <option>Entertainment</option>
+                    <option>Investment</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl shadow-md shadow-blue-500/10 transition-all duration-200 mt-2">
+                Add Transaction
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+  if(localStorage.getItem("loggedIn")!=="true"){
+    window.location.href="login.html";
+  }
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
