@@ -183,6 +183,7 @@ const darkToggle = document.getElementById("darkToggle");
 
 const savedTheme = localStorage.getItem("theme");
 
+
 if (savedTheme === "dark") {
 
     document.documentElement.classList.add("dark");
@@ -944,7 +945,7 @@ darkToggle?.addEventListener("change", function () {
 
     document.documentElement.classList.toggle(
 
-        "dark"
+        "light"
 
     );
 
