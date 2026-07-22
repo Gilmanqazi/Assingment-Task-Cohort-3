@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../Context/AuthContext'; // Path adjust kar lein agar needed ho
+import { AuthContext } from '../Context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
@@ -45,28 +45,29 @@ const Register = () => {
 
   const onSubmit = (data) => {
     const success = registerUser(data.name, data.email, data.password);
-    if (success) navigate('/',{ replace: true });
+    if (success) navigate('/', { replace: true });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-zinc-900 via-zinc-900 to-black flex justify-center items-center p-4 font-sans selection:bg-blue-600 selection:text-white">
+    /* MAIN CONTAINER: Top margin/padding add kar di hai (pt-20 / pt-24) taaki Navbar se space bane */
+    <div className="min-h-screen w-full bg-gradient-to-br from-zinc-900 via-zinc-900 to-black flex flex-col justify-center items-center px-4 pt-20 pb-8 sm:px-6 sm:pt-24 sm:pb-12 font-sans selection:bg-blue-600 selection:text-white">
       
-      {/* MINI CARD */}
-      <div className="w-full max-w-xs sm:max-w-sm bg-white rounded-2xl p-5 sm:p-6 shadow-2xl shadow-black/50 border border-zinc-100 relative overflow-hidden">
+      {/* RESPONSIVE MINI CARD CONTAINER (Height aur Padding Compact hai) */}
+      <div className="w-full max-w-[340px] sm:max-w-sm bg-white rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/50 border border-zinc-100 relative overflow-hidden my-auto">
         
         {/* Subtle Decorative Glow */}
         <div className="absolute -top-16 -right-16 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
 
         {/* LOGO */}
-        <div className="flex justify-center mb-4">
-          <Link to="/" className="flex items-center gap-2 text-xl font-black tracking-tight text-zinc-900">
+        <div className="flex justify-center mb-2 sm:mb-3">
+          <Link to="/" className="flex items-center gap-2 text-base sm:text-lg font-black tracking-tight text-zinc-900">
             <svg 
-              width="28" 
-              height="28" 
+              width="24" 
+              height="24" 
               viewBox="0 0 400 400" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
-              className="rounded-lg shadow-sm"
+              className="rounded-lg shadow-sm sm:w-6 sm:h-6"
             >
               <rect width="400" height="400" rx="80" fill="#18181B"/>
               <path d="M110 130H290L110 270H290" stroke="white" strokeWidth="32" strokeLinecap="round" strokeLinejoin="round"/>
@@ -77,38 +78,38 @@ const Register = () => {
         </div>
 
         {/* HEADER TEXT */}
-        <div className="text-center mb-4">
-          <h2 className="text-base font-bold text-zinc-900">Create an account</h2>
-          <p className="text-zinc-500 text-xs mt-0.5">Join ZOMIX today</p>
+        <div className="text-center mb-2.5 sm:mb-3">
+          <h2 className="text-xs sm:text-sm font-bold text-zinc-900">Create an account</h2>
+          <p className="text-zinc-500 text-[10px] sm:text-[11px] mt-0.5">Join ZOMIX today</p>
         </div>
 
         {/* FORM */}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 sm:space-y-2.5">
           
           {/* FULL NAME FIELD */}
           <div>
-            <label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500 mb-1">
+            <label className="block text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-zinc-500 mb-0.5">
               Full Name
             </label>
             <input
               type="text"
-              placeholder="John Doe"
+              placeholder="Your Name"
               {...register("name", { required: "Name is required" })}
-              className={`w-full px-3 py-2 bg-zinc-50 border text-zinc-900 text-xs rounded-lg focus:bg-white focus:outline-none transition-all ${
+              className={`w-full px-2.5 py-1.5 bg-zinc-50 border text-zinc-900 text-xs rounded-lg focus:bg-white focus:outline-none transition-all ${
                 errors.name ? 'border-rose-500' : 'border-zinc-200 focus:border-blue-600'
               }`}
             />
-            {errors.name && <p className="text-rose-500 text-[10px] mt-0.5 font-medium">{errors.name.message}</p>}
+            {errors.name && <p className="text-rose-500 text-[9px] mt-0.5 font-medium">{errors.name.message}</p>}
           </div>
 
           {/* EMAIL FIELD */}
           <div>
-            <label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500 mb-1">
+            <label className="block text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-zinc-500 mb-0.5">
               Email Address
             </label>
             <input
               type="email"
-              placeholder="name@example.com"
+              placeholder="YourEmail@example.com"
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -116,16 +117,16 @@ const Register = () => {
                   message: "Invalid email"
                 }
               })}
-              className={`w-full px-3 py-2 bg-zinc-50 border text-zinc-900 text-xs rounded-lg focus:bg-white focus:outline-none transition-all ${
+              className={`w-full px-2.5 py-1.5 bg-zinc-50 border text-zinc-900 text-xs rounded-lg focus:bg-white focus:outline-none transition-all ${
                 errors.email ? 'border-rose-500' : 'border-zinc-200 focus:border-blue-600'
               }`}
             />
-            {errors.email && <p className="text-rose-500 text-[10px] mt-0.5 font-medium">{errors.email.message}</p>}
+            {errors.email && <p className="text-rose-500 text-[9px] mt-0.5 font-medium">{errors.email.message}</p>}
           </div>
 
           {/* PASSWORD FIELD */}
           <div>
-            <label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500 mb-1">
+            <label className="block text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-zinc-500 mb-0.5">
               Password
             </label>
             <div className="relative">
@@ -139,24 +140,24 @@ const Register = () => {
                     message: "Min 6 characters required"
                   }
                 })}
-                className={`w-full px-3 py-2 bg-zinc-50 border text-zinc-900 text-xs rounded-lg pr-10 focus:bg-white focus:outline-none transition-all ${
+                className={`w-full px-2.5 py-1.5 bg-zinc-50 border text-zinc-900 text-xs rounded-lg pr-10 focus:bg-white focus:outline-none transition-all ${
                   errors.password ? 'border-rose-500' : 'border-zinc-200 focus:border-blue-600'
                 }`}
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-semibold text-zinc-400 hover:text-zinc-700"
+                className="absolute right-2 top-1/2 -translate-y-1/2 px-1 text-[9px] font-semibold text-zinc-400 hover:text-zinc-700"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
-            {errors.password && <p className="text-rose-500 text-[10px] mt-0.5 font-medium">{errors.password.message}</p>}
+            {errors.password && <p className="text-rose-500 text-[9px] mt-0.5 font-medium">{errors.password.message}</p>}
 
             {/* LIVE STRENGTH METER */}
             {passwordValue && (
-              <div className="mt-1.5 bg-zinc-50 p-1.5 rounded-lg border border-zinc-100">
-                <div className="flex justify-between items-center text-[10px] mb-1">
+              <div className="mt-1 bg-zinc-50 p-1.5 rounded-md border border-zinc-100">
+                <div className="flex justify-between items-center text-[9px] mb-0.5">
                   <span className="text-zinc-400">Strength:</span>
                   <span className={`font-bold ${strength.textColor}`}>{strength.label}</span>
                 </div>
@@ -169,7 +170,7 @@ const Register = () => {
 
           {/* CONFIRM PASSWORD */}
           <div>
-            <label className="block text-[10px] font-bold uppercase tracking-wider text-zinc-500 mb-1">
+            <label className="block text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-zinc-500 mb-0.5">
               Confirm Password
             </label>
             <div className="relative">
@@ -180,37 +181,37 @@ const Register = () => {
                   required: "Please confirm password",
                   validate: (value) => value === passwordValue || "Passwords do not match"
                 })}
-                className={`w-full px-3 py-2 bg-zinc-50 border text-zinc-900 text-xs rounded-lg pr-10 focus:bg-white focus:outline-none transition-all ${
+                className={`w-full px-2.5 py-1.5 bg-zinc-50 border text-zinc-900 text-xs rounded-lg pr-10 focus:bg-white focus:outline-none transition-all ${
                   errors.confirmPassword ? 'border-rose-500' : 'border-zinc-200 focus:border-blue-600'
                 }`}
               />
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-semibold text-zinc-400 hover:text-zinc-700"
+                className="absolute right-2 top-1/2 -translate-y-1/2 px-1 text-[9px] font-semibold text-zinc-400 hover:text-zinc-700"
               >
                 {showConfirmPassword ? "Hide" : "Show"}
               </button>
             </div>
             {errors.confirmPassword && (
-              <p className="text-rose-500 text-[10px] mt-0.5 font-medium">{errors.confirmPassword.message}</p>
+              <p className="text-rose-500 text-[9px] mt-0.5 font-medium">{errors.confirmPassword.message}</p>
             )}
           </div>
 
           {/* SUBMIT BUTTON */}
           <button
             type="submit"
-            className="w-full bg-zinc-900 hover:bg-zinc-800 active:scale-95 text-white font-semibold py-2.5 rounded-xl transition-all shadow-md shadow-zinc-900/10 text-xs flex items-center justify-center gap-1.5 mt-2"
+            className="w-full bg-zinc-900 hover:bg-zinc-800 active:scale-[0.98] text-white font-semibold py-2 rounded-xl transition-all shadow-md shadow-zinc-900/10 text-xs flex items-center justify-center gap-1.5 mt-2.5"
           >
             <span>Create Account</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </button>
         </form>
 
         {/* SWITCH TO LOGIN */}
-        <p className="text-center text-xs text-zinc-500 mt-4">
+        <p className="text-center text-[10px] sm:text-[11px] text-zinc-500 mt-2.5">
           Already have an account?{' '}
           <Link to="/login" className="font-semibold text-blue-600 hover:underline">
             Sign In

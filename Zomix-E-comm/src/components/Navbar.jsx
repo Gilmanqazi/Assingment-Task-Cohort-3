@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from '../Context/Cartcontext';
 import { AuthContext } from '../Context/AuthContext';
 
@@ -9,7 +9,7 @@ const Navbar = () => {
   const { cartItems } = useContext(CartContext);
   const { user, logoutUser } = useContext(AuthContext);
 
-  console.log(user,"USERR")
+const navigate = useNavigate()
 
  
   const toggleMenu = () => {
@@ -67,7 +67,10 @@ const Navbar = () => {
               <div className="flex items-center gap-3">
                 <span className="text-xs text-zinc-500 font-medium">Hi, {user.name}</span>
                 <button 
-                  onClick={logoutUser} 
+                  onClick={()=>{
+                    logoutUser();
+                    navigate("/login")
+                  }} 
                   className="text-xs text-red-500 hover:underline font-medium"
                 >
                   Logout
@@ -131,7 +134,11 @@ const Navbar = () => {
               <div className="flex items-center justify-between">
                 <span className="text-xs text-zinc-500">Logged in as {user.name}</span>
                 <button 
-                  onClick={() => { logoutUser(); setIsOpen(false); }} 
+                 onClick={()=>{
+                  logoutUser();
+                  setIsOpen(false);
+                  navigate("/login")
+                }} 
                   className="text-xs text-red-500 font-medium"
                 >
                   Logout
@@ -139,7 +146,7 @@ const Navbar = () => {
               </div>
             ) : (
               <Link 
-                to="/auth" 
+                to="/login" 
                 onClick={() => setIsOpen(false)} 
                 className="block text-center py-2.5 bg-zinc-900 text-white text-xs font-medium rounded-lg"
               >
