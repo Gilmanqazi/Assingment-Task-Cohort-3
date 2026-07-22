@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../Context/Cartcontext';
-import { Link ,useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 import { toast } from 'react-toastify';
 
@@ -23,6 +23,7 @@ const ProductCard = ({ product }) => {
       actionCallback();
     }
   };
+  
 
   
   const productImage = product.images?.[0] || "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500";

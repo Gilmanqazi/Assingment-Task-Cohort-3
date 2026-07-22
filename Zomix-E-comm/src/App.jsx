@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom"; 
 import Home from './pages/Home';
-import About from './components/About';
-import Contact from './components/Contact';
+import About from './pages/About';
+import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import Shop from './pages/Shop'; 
 import Cart from './pages/Cart';
-import ProductDetails from './components/ProductDetails';
-import Login from './Auth/Login';
+import ProductDetails from './pages/ProductDetails';
+import Login from './auth/Login';
 import Register from './Auth/Register';
 
 const App = () => {

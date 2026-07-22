@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { useParams ,useNavigate,Link, Navigate} from 'react-router-dom'
-import ProductCard from './ProductCard'
+import ProductCard from '../components/ProductCard'
 import products from '../data/Product'
-import { CartContext } from '../Context/Cartcontext';
+import { CartContext } from '../Context/Cartcontext'
 
 
 const ProductDetails = () => {
