@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import products from '../data/Product'
 import ProductCard from '../components/ProductCard'
-import { api } from '../config/Products.api';
 
 
 const Shop = () => {
@@ -8,56 +8,7 @@ const Shop = () => {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState("")
-  const [productData, setProductData] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
 
-  const fetchProduct = async()=>{
-    try {
-      const res = await api.get("/products")
-      setProductData(res.data)
-      setIsLoading(false)
-    } catch (error) {
-      console.log("Error in fetching product api data",error)
-    }
-  }
-
-  useEffect(()=>{
-fetchProduct()
-  },[])
-
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 bg-white z-[9999] flex flex-col items-center justify-center select-none">
-       
-        <div className="flex items-center gap-3 animate-pulse">
-          <svg 
-            width="44" 
-            height="44" 
-            viewBox="0 0 400 400" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            className="rounded-xl shadow-md"
-          >
-            <rect width="400" height="400" rx="80" fill="#18181B"/>
-            <path d="M110 130H290L110 270H290" stroke="white" strokeWidth="32" strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="290" cy="130" r="18" fill="#2563EB"/>
-          </svg>
-          <span className="text-3xl font-bold tracking-tight text-zinc-900 font-sans">
-            ZOMIX<span className="text-blue-600">.</span>
-          </span>
-        </div>
-
-        
-        <div className="w-32 h-[2px] bg-zinc-100 rounded-full mt-6 overflow-hidden relative">
-          <div className="w-full h-full bg-zinc-900 rounded-full animate-progress origin-left"></div>
-        </div>
-
-        <p className="text-xs text-zinc-400 font-medium tracking-widest uppercase mt-4">
-          Loading Store...
-        </p>
-      </div>
-    );
-  }
 
 
   return (
@@ -126,12 +77,12 @@ fetchProduct()
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {productData
-          ?.filter((pro) => {
+      {products
+          ?.filter((product) => {
             // Safe check: agar kisi product ka title na ho toh crash na ho
-             const matchesSearch = pro?.title?.toLowerCase().includes(searchQuery.toLowerCase())
+             const matchesSearch = product?.title?.toLowerCase().includes(searchQuery.toLowerCase())
 
-             const matchesCategory = selectedCategory === "all" || pro?.category?.name?.toLowerCase() === selectedCategory.toLowerCase()
+             const matchesCategory = selectedCategory === "all" || product?.category?.name?.toLowerCase() === selectedCategory.toLowerCase()
 
              return matchesSearch && matchesCategory 
           }).sort((a,b)=>{

@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { useParams ,useNavigate,Link, Navigate} from 'react-router-dom'
 import ProductCard from './ProductCard'
+import products from '../data/Product'
 import { CartContext } from '../Context/Cartcontext';
-import { api } from '../config/Products.api';
 
 
 const ProductDetails = () => {
@@ -13,75 +13,30 @@ const ProductDetails = () => {
 
   const {addToCart} = useContext(CartContext)
 
-  const [productData, setProductData] = useState([])
+  const currentIndex = products.findIndex((p)=> p.id === parseInt(id))
+  const product = products[currentIndex]
 
-   const [isLoading, setIsLoading] = useState(true)
+  console.log(product,"producccc")
 
-
-
-  const ProductsDetailsFnc = async()=>{
-    const res = await api.get("/products")
-    setProductData(res.data)
-    setIsLoading(false)
-  }
-  
-  useEffect(()=>{
-    ProductsDetailsFnc()
-  },[])
-
-  const currentIndex = productData.findIndex((p)=> p.id === parseInt(id))
-  const product = productData[currentIndex]
-  
-
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 bg-white z-[9999] flex flex-col items-center justify-center select-none">
-       
-        <div className="flex items-center gap-3 animate-pulse">
-          <svg 
-            width="44" 
-            height="44" 
-            viewBox="0 0 400 400" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            className="rounded-xl shadow-md"
-          >
-            <rect width="400" height="400" rx="80" fill="#18181B"/>
-            <path d="M110 130H290L110 270H290" stroke="white" strokeWidth="32" strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="290" cy="130" r="18" fill="#2563EB"/>
-          </svg>
-          <span className="text-3xl font-bold tracking-tight text-zinc-900 font-sans">
-            ZOMIX<span className="text-blue-600">.</span>
-          </span>
-        </div>
-
-        
-        <div className="w-32 h-[2px] bg-zinc-100 rounded-full mt-6 overflow-hidden relative">
-          <div className="w-full h-full bg-zinc-900 rounded-full animate-progress origin-left"></div>
-        </div>
-
-        <p className="text-xs text-zinc-400 font-medium tracking-widest uppercase mt-4">
-          Loading Store...
-        </p>
-      </div>
-    );
+  if(!product){
+    return <div className="pt-32 text-center text-gray-900">Product Not found!</div>
   }
 
   const handlePrev = ()=>{
     if(currentIndex>0){
-      const prevProduct = productData[currentIndex - 1]
+      const prevProduct = products[currentIndex - 1]
       navigate(`/product/${prevProduct.id}`)
     }
   }
 
   const handleNext = ()=>{
-    if(currentIndex < productData.length -1){
-      const nextProduct = productData[currentIndex + 1]
+    if(currentIndex < products.length -1){
+      const nextProduct = products[currentIndex + 1]
       navigate(`/product/${nextProduct.id}`)
     }
   }
 
-  const relatedProducts = productData.filter((p)=>p?.category?.name === product.category.name && p.id !== product.id).slice(0,4)
+  const relatedProducts = products.filter((p)=>p?.category?.name === product.category.name && p.id !== product.id).slice(0,4)
    
 
   const productImage = product.images?.[0] || "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500";
@@ -101,7 +56,7 @@ const ProductDetails = () => {
         </button>
         <button 
           onClick={handleNext} 
-          disabled={currentIndex === productData.length - 1}
+          disabled={currentIndex === products.length - 1}
           className="px-4 py-2 bg-white border rounded-xl shadow-sm hover:bg-gray-100 disabled:opacity-50 transition-all flex items-center gap-2"
         >
           Next <i className="ri-arrow-right-s-line"></i>

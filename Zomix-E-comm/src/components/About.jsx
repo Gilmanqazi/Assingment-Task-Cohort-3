@@ -49,7 +49,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Core Values Section */}
+      
       <div className="border-t border-zinc-100 pt-16">
         <h3 className="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-10 text-center">
           Why Choose Us

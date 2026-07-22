@@ -1,12 +1,18 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(()=>{
+   const savedUser = localStorage.getItem("activeUser")
+   return savedUser ? JSON.parse(savedUser) : null
+  });
 
 
+
+  
   useEffect(() => {
     const savedUser = localStorage.getItem("activeUser");
     if (savedUser) {
@@ -14,39 +20,49 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-
-  const registerUser = (name,email, password) => {
+  // REGISTER USER
+  const registerUser = (name, email, password) => {
     const users = JSON.parse(localStorage.getItem("allUsers")) || [];
     
-  
-    if (users.find(u => u.email === email)) {
-      alert("User already exists! Please login.");
+
+    if (users.find((u) => u.email.toLowerCase() === email)) {
+      toast.warn("User already exists! Please login.");
       return false;
     }
 
-    const newUser = { name,email, password };
+    const newUser = { name, email, password };
     users.push(newUser);
     localStorage.setItem("allUsers", JSON.stringify(users));
-    alert("Registration Successful! Now you can login.");
+
+    const activeUserData = { name, email };
+
+    localStorage.setItem("activeUser", JSON.stringify(activeUserData));
+    setUser(activeUserData); 
+    toast.success("Registration Successful!");
     return true;
   };
 
- 
+  // LOGIN USER
   const loginUser = (email, password) => {
     const users = JSON.parse(localStorage.getItem("allUsers")) || [];
-    const matchedUser = users.find(u => u.email === email && u.password === password);
+   
+
+    const matchedUser = users.find(
+      (u) => u.email.toLowerCase() === email && u.password === password
+    );
 
     if (matchedUser) {
-      setUser({name:matchedUser.name, email:matchedUser.email});
-      localStorage.setItem("activeUser", JSON.stringify({ name:matchedUser.name, email:matchedUser.email}));
+      const activeUserData = { name: matchedUser.name, email: matchedUser.email };
+      localStorage.setItem("activeUser", JSON.stringify(activeUserData));
+      setUser(activeUserData);
       return true;
     } else {
-      alert("Invalid email or password!");
+      toast.error("Invalid email or password!");
       return false;
     }
   };
 
-  
+  // LOGOUT USER
   const logoutUser = () => {
     setUser(null);
     localStorage.removeItem("activeUser");

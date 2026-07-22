@@ -9,6 +9,8 @@ const Navbar = () => {
   const { cartItems } = useContext(CartContext);
   const { user, logoutUser } = useContext(AuthContext);
 
+  console.log(user,"USERR")
+
  
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -20,7 +22,7 @@ const Navbar = () => {
         
         
       <Link to="/" className="flex items-center gap-2.5 text-xl font-bold tracking-tight text-zinc-900">
-  {/* Chota SVG Icon (Size: 36x36) */}
+
   <svg 
     width="36" 
     height="36" 
@@ -73,7 +75,7 @@ const Navbar = () => {
               </div>
             ) : (
               <Link 
-                to="/auth" 
+                to="/login" 
                 className="px-4 py-2 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-medium rounded-lg transition-all"
               >
                 Login

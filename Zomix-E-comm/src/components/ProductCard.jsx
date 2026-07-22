@@ -2,28 +2,29 @@ import React, { useContext } from 'react';
 import { CartContext } from '../Context/Cartcontext';
 import { Link ,useNavigate} from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
+import { toast } from 'react-toastify';
 
 
 const ProductCard = ({ product }) => {
 
 
   const {addToCart} = useContext(CartContext)
-  const { user } = useContext(AuthContext); // User status nikala
+  const { user } = useContext(AuthContext); 
   const navigate = useNavigate();
 
-  // Agar product hi undefined ho toh collapse hone se bachane ke liye safety check
+  
   if (!product) return null;
 
   const handleProtectedAction = (actionCallback) => {
     if (!user) {
-      alert("Please Login/Register");
-      navigate('/auth');
+      toast.warn("Please Login/Register");
+      navigate('/login');
     } else {
       actionCallback();
     }
   };
 
-  // images array se pehli image nikalne ke liye safe tarika
+  
   const productImage = product.images?.[0] || "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500";
 
   return (
@@ -61,7 +62,7 @@ const ProductCard = ({ product }) => {
           <div>
             <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">Price</p>
             <span className="text-2xl font-bold text-gray-900">
-              ₹{product?.price ? product.price * 84 : "00"} {/* Agar price USD me hai toh approximate INR convert kiya hai */}
+              ₹{product?.price ? product.price * 84 : "00"} 
             </span>
           </div>
 

@@ -7,7 +7,8 @@ import Navbar from './components/Navbar';
 import Shop from './pages/Shop'; 
 import Cart from './pages/Cart';
 import ProductDetails from './components/ProductDetails';
-import Auth from './pages/Auth';
+import Login from './Auth/Login';
+import Register from './Auth/Register';
 
 const App = () => {
 
@@ -68,7 +69,8 @@ return ()=> clearTimeout(timer)
           <Route path='/contact' element={<Contact />} />
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/product/:id' element={<ProductDetails/>}/>
-          <Route path='/auth' element={<Auth />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register/>}/>
         </Routes>
       </div>
     </div>

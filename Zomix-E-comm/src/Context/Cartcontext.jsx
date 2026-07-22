@@ -1,14 +1,13 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import { AuthContext } from "./AuthContext";
+import { toast } from "react-toastify";
 
 /* eslint-disable react-refresh/only-export-components */
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
 
-  const [cartItems, setCartItems] = useState(() => {
-    const savedCart = localStorage.getItem("userCart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [cartItems, setCartItems] = useState();
 
 
   useEffect(() => {
@@ -16,54 +15,52 @@ export const CartProvider = ({ children }) => {
   }, [cartItems]);
 
   
-  // const addToCart = (product) => {
-  //   setCartItems([...cartItems, product]);
-  // };
+const {user} = useContext(AuthContext)
 
-  
-  // const removeFromCart = (indexToFind) => {
-  //   const updateCart = cartItems.filter((_,index) => index !== indexToFind);
-  //   setCartItems(updateCart);
-  // };
+useEffect(()=>{
+if(user && user.email){
+  const savedCart = localStorage.getItem(`userCart_${user.email}`)
+  setCartItems(savedCart ? JSON.parse(savedCart) : []);
+}else{
+  setCartItems([])
+}
+},[user])
+
 
   // 1. Add To Cart with Quantity
 const addToCart = (product) => {
-  const existingIndex = cartItems.findIndex((item) => item.id === product.id);
+  if (!user) {
+    toast.warn("Please login first to add items to cart!");
+    return;
 
-  if (existingIndex > -1) {
-    // Agar product pehle se cart me hai, to bas quantity badhao
-    const updatedCart = [...cartItems];
-    updatedCart[existingIndex].quantity = (updatedCart[existingIndex].quantity || 1) + 1;
-    setCartItems(updatedCart);
-  } else {
-    // Agar naya product hai, to quantity = 1 ke saath add karo
-    setCartItems([...cartItems, { ...product, quantity: 1 }]);
   }
+
+  const updatedCart = [...cartItems, product]
+  setCartItems(updatedCart)
+
+  localStorage.setItem(`userCart_${user.email}`, JSON.stringify(updatedCart));
 };
 
 // 2. Remove / Decrement Quantity
-const removeFromCart = (id) => {
-  const existingIndex = cartItems.findIndex((item) => item.id === id);
+const removeFromCart = (productId) => {
+  if (!user) return;
 
-  if (existingIndex > -1) {
-    const updatedCart = [...cartItems];
-    
-    if (updatedCart[existingIndex].quantity > 1) {
-      // Agar quantity 1 se zyada hai, to 1 kam kar do
-      updatedCart[existingIndex].quantity -= 1;
-    } else {
-      // Agar quantity 1 hi hai, to poora item hata do
-      updatedCart.splice(existingIndex, 1);
-    }
-    
-    setCartItems(updatedCart);
+  const updatedCart = cartItems.filter((item) => item.id !== productId);
+  setCartItems(updatedCart);
+  
+  localStorage.setItem(`userCart_${user.email}`, JSON.stringify(updatedCart));
+};
+
+// 4. Clear Cart (After Order placing)
+const clearCart = () => {
+  setCartItems([]);
+  if (user) {
+    localStorage.removeItem(`userCart_${user.email}`);
   }
 };
 
 
-  const clearCart = () => {
-    setCartItems([]);
-  };
+
 
   return (
     <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
