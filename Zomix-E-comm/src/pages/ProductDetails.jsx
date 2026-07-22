@@ -16,7 +16,6 @@ const ProductDetails = () => {
   const currentIndex = products.findIndex((p)=> p.id === parseInt(id))
   const product = products[currentIndex]
 
-  console.log(product,"producccc")
 
   if(!product){
     return <div className="pt-32 text-center text-gray-900">Product Not found!</div>
