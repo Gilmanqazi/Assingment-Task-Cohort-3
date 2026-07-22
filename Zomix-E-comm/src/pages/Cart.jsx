@@ -76,6 +76,8 @@ const Cart = () => {
                 >
                   +
                 </button>
+
+                
               </div>
 
               {/* Total Price for this item (Price * Quantity) */}

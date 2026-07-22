@@ -2,14 +2,13 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../Context/Cartcontext';
-import products from '../data/Product';
 
 
-const Home = () => {
+const Home = ({product}) => {
   const { user } = useContext(AuthContext);
    const { cartItems } = useContext(CartContext)
 
-const uniqueCategories = [...new Set(products?.map(product => product?.category?.name))].filter(Boolean);
+const uniqueCategories = [...new Set(product?.map(pro => pro?.category?.name))].filter(Boolean);
 const cartValue = cartItems.reduce((acc,items)=> acc+ (items.price ? items.price * 84 : 0),0)
 
   return (

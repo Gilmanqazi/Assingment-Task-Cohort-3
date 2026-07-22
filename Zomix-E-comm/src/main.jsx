@@ -6,6 +6,7 @@ import 'remixicon/fonts/remixicon.css'
 import { BrowserRouter } from 'react-router-dom'
 import { CartProvider } from './Context/Cartcontext.jsx'
 import { AuthProvider } from './Context/AuthContext.jsx'
+import { ToastContainer } from 'react-toastify';
 
 
 createRoot(document.getElementById('root')).render(
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')).render(
      <CartProvider>
   <BrowserRouter>
     <App />
+    <ToastContainer/>
     </BrowserRouter>
     </CartProvider>
    </AuthProvider>
