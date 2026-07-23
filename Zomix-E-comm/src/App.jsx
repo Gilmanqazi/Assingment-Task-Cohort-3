@@ -8,7 +8,7 @@ import Shop from './pages/Shop';
 import Cart from './pages/Cart';
 import ProductDetails from './pages/ProductDetails';
 import Login from './auth/Login';
-import Register from './Auth/Register';
+import Register from './auth/Register';
 import CheckoutProcess from './pages/CheckoutModal';
 
 const App = () => {
