@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom"; 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -10,10 +10,13 @@ import ProductDetails from './pages/ProductDetails';
 import Login from './auth/Login';
 import Register from "./auth/Register"
 import CheckoutProcess from './pages/CheckoutModal';
+import { AuthContext } from './Context/AuthContext';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 const App = () => {
 
   const [isLoading, setIsLoading] = useState(true);
+  const {user} = useContext(AuthContext)
 
   useEffect(()=>{
 const timer = setTimeout(()=>{
@@ -72,7 +75,9 @@ return ()=> clearTimeout(timer)
           <Route path='/product/:id' element={<ProductDetails/>}/>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register/>}/>
-          <Route path='/checkoutProcess' element={<CheckoutProcess/>}/>
+          <Route path='/checkoutProcess' element={<ProtectedRoute user={user}>
+            <CheckoutProcess />
+          </ProtectedRoute>}/>
         </Routes>
       </div>
     </div>

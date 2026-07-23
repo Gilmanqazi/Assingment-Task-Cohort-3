@@ -14,8 +14,6 @@ const Home = () => {
 const uniqueCategories = [...new Set(products?.map(pro => pro?.category?.name))].filter(Boolean);
 const cartValue = cartItems.reduce((acc,items)=> acc+ (items.price ? items.price * 84 : 0),0)
 
-console.log(uniqueCategories.length,"UNIEE")
-
   return (
     <div className="min-h-screen bg-white text-zinc-900 flex flex-col justify-between pt-28">
       
