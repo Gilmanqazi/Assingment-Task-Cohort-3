@@ -6,64 +6,110 @@ import { toast } from "react-toastify";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState([]);
+  const { user } = useContext(AuthContext);
 
-  const [cartItems, setCartItems] = useState();
-
-
+  
   useEffect(() => {
-    localStorage.setItem("userCart", JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (user && user.email) {
+      const savedCart = localStorage.getItem(`userCart_${user.email}`);
+      setCartItems(savedCart ? JSON.parse(savedCart) : []);
+    } else {
+      setCartItems([]);
+    }
+  }, [user]);
+
+
+  const saveCartToStorage = (updatedCart) => {
+    if (user && user.email) {
+      localStorage.setItem(`userCart_${user.email}`, JSON.stringify(updatedCart));
+    }
+  };
+
+  const isInCart = (productId) => {
+    if (!cartItems || cartItems.length === 0) return false;
+    return cartItems.some((item) => (item.id || item._id) === productId);
+  };
+
+  const addToCart = (product) => {
+    if (!user) {
+      toast.warn("Please login first to add items to cart!");
+      return;
+    }
+
+    const productId = product.id || product._id;
+    const existingIndex = cartItems.findIndex(
+      (item) => (item.id || item._id) === productId
+    );
+
+    let updatedCart;
+
+    if (existingIndex > -1) {
+     
+      updatedCart = cartItems.map((item, index) =>
+        index === existingIndex
+          ? { ...item, quantity: (item.quantity || 1) + 1 }
+          : item
+      );
+    } else {
+     
+      updatedCart = [...cartItems, { ...product, quantity: 1 }];
+    }
+
+    setCartItems(updatedCart);
+    saveCartToStorage(updatedCart);
+  };
+
+
+  const removeFromCart = (productId) => {
+    if (!user) return;
+
+    const updatedCart = cartItems
+      .map((item) => {
+        const id = item.id || item._id;
+        if (id === productId) {
+          return { ...item, quantity: (item.quantity || 1) - 1 };
+        }
+        return item;
+      })
+      .filter((item) => item.quantity > 0); 
+
+    setCartItems(updatedCart);
+    saveCartToStorage(updatedCart);
+  };
 
   
-const {user} = useContext(AuthContext)
+  const deleteFromCart = (productId) => {
+    if (!user) return;
 
-useEffect(()=>{
-if(user && user.email){
-  const savedCart = localStorage.getItem(`userCart_${user.email}`)
-  setCartItems(savedCart ? JSON.parse(savedCart) : []);
-}else{
-  setCartItems([])
-}
-},[user])
+    const updatedCart = cartItems.filter(
+      (item) => (item.id || item._id) !== productId
+    );
 
+    setCartItems(updatedCart);
+    saveCartToStorage(updatedCart);
+  };
 
-  // 1. Add To Cart with Quantity
-const addToCart = (product) => {
-  if (!user) {
-    toast.warn("Please login first to add items to cart!");
-    return;
-
-  }
-
-  const updatedCart = [...cartItems, product]
-  setCartItems(updatedCart)
-
-  localStorage.setItem(`userCart_${user.email}`, JSON.stringify(updatedCart));
-};
-
-// 2. Remove / Decrement Quantity
-const removeFromCart = (productId) => {
-  if (!user) return;
-
-  const updatedCart = cartItems.filter((item) => item.id !== productId);
-  setCartItems(updatedCart);
   
-  localStorage.setItem(`userCart_${user.email}`, JSON.stringify(updatedCart));
-};
-
-// 4. Clear Cart (After Order placing)
-const clearCart = () => {
-  setCartItems([]);
-  if (user) {
-    localStorage.removeItem(`userCart_${user.email}`);
-  }
-};
-
-
+  const clearCart = () => {
+    setCartItems([]);
+    if (user && user.email) {
+      localStorage.removeItem(`userCart_${user.email}`);
+    }
+  };
 
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        deleteFromCart,
+        clearCart,
+        isInCart, 
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

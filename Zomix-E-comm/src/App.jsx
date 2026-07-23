@@ -9,6 +9,7 @@ import Cart from './pages/Cart';
 import ProductDetails from './pages/ProductDetails';
 import Login from './auth/Login';
 import Register from './Auth/Register';
+import CheckoutProcess from './pages/CheckoutModal';
 
 const App = () => {
 
@@ -71,6 +72,7 @@ return ()=> clearTimeout(timer)
           <Route path='/product/:id' element={<ProductDetails/>}/>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register/>}/>
+          <Route path='/checkoutProcess' element={<CheckoutProcess/>}/>
         </Routes>
       </div>
     </div>

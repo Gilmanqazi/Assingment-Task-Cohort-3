@@ -2,14 +2,19 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../Context/Cartcontext';
+import products from '../data/Product';
 
 
-const Home = ({product}) => {
+const Home = () => {
   const { user } = useContext(AuthContext);
    const { cartItems } = useContext(CartContext)
 
-const uniqueCategories = [...new Set(product?.map(pro => pro?.category?.name))].filter(Boolean);
+  
+
+const uniqueCategories = [...new Set(products?.map(pro => pro?.category?.name))].filter(Boolean);
 const cartValue = cartItems.reduce((acc,items)=> acc+ (items.price ? items.price * 84 : 0),0)
+
+console.log(uniqueCategories.length,"UNIEE")
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 flex flex-col justify-between pt-28">
@@ -52,7 +57,7 @@ const cartValue = cartItems.reduce((acc,items)=> acc+ (items.price ? items.price
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto my-12 w-full">
   
-  {/* Box 1: Cart Items */}
+  {/* Cart Items */}
   <Link to='/cart' className="border border-zinc-100 bg-zinc-50/40 p-6 rounded-xl flex items-center justify-between shadow-sm">
     <div className="space-y-1">
       <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Cart Items</h4>
@@ -64,7 +69,7 @@ const cartValue = cartItems.reduce((acc,items)=> acc+ (items.price ? items.price
     </div>
   </Link>
 
-  {/* Box 2: Cart Value */}
+  {/* Cart Value */}
   <Link to='/cart' className="border border-zinc-100 bg-zinc-50/40 p-6 rounded-xl flex items-center justify-between shadow-sm">
     <div className="space-y-1">
       <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Cart Value</h4>
@@ -77,7 +82,7 @@ const cartValue = cartItems.reduce((acc,items)=> acc+ (items.price ? items.price
     </div>
   </Link>
 
-  {/* Box 3: Total Categories */}
+  {/* Total Categories */}
   <div className="border border-zinc-100 bg-zinc-50/40 p-6 rounded-xl flex items-center justify-between shadow-sm">
     <div className="space-y-1">
       <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Total Categories</h4>

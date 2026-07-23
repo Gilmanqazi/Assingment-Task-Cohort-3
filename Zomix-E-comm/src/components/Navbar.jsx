@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from '../Context/Cartcontext';
 import { AuthContext } from '../Context/AuthContext';
+import { toast } from 'react-toastify';
 
 
 const Navbar = () => {
@@ -70,6 +71,7 @@ const navigate = useNavigate()
                   onClick={()=>{
                     logoutUser();
                     navigate("/login")
+                    toast.error("Logged out, see you soon!")
                   }} 
                   className="text-xs text-red-500 hover:underline font-medium"
                 >

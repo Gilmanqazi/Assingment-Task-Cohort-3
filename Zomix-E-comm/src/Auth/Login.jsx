@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../Context/AuthContext'; 
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -17,7 +18,10 @@ const Login = () => {
 
   const onSubmit = (data) => {
     const success = loginUser(data.email, data.password);
-    if (success) navigate("/");
+    if (success) {
+      navigate("/");
+ toast.success("Login Successfull")
+    }
   };
 
   return (

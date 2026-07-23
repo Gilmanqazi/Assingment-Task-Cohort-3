@@ -24,11 +24,9 @@ const Contact = () => {
 
     setLoading(true);
 
-    // Simulate Network/API Request Delay (1.5 seconds)
     setTimeout(() => {
       setLoading(false);
 
-      // Generating Fake Response Data based on user query
       const fakeTicketId = `TKT-${Math.floor(100000 + Math.random() * 900000)}`;
       
       setResponseModal({
@@ -39,7 +37,6 @@ const Contact = () => {
         aiReply: `Hello ${formData.name}, thank you for reaching out! We have received your query regarding "${formData.subject || 'your request'}". Our support team has assigned ticket #${fakeTicketId} to your request and sent a confirmation email to ${formData.email}. We usually respond within 2-4 business hours.`,
       });
 
-      // Clear Form
       setFormData({ name: '', email: '', subject: '', message: '' });
     }, 1500);
   };
@@ -162,7 +159,7 @@ const Contact = () => {
 
       </div>
 
-      {/* Fake Response Modal Pop-up */}
+    
       {responseModal && (
         <div className="fixed inset-0 bg-zinc-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white border border-zinc-100 rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
