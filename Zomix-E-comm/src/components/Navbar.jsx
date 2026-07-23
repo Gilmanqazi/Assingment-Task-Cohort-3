@@ -140,6 +140,7 @@ const navigate = useNavigate()
                   logoutUser();
                   setIsOpen(false);
                   navigate("/login")
+                  toast.error("Logged out, see you soon!")
                 }} 
                   className="text-xs text-red-500 font-medium"
                 >
