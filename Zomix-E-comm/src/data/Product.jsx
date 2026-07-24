@@ -1030,466 +1030,466 @@ const products =[
   creationAt: "2026-07-18T05:33:44.000Z",
   updatedAt: "2026-07-18T05:33:44.000Z"
   },
-  {
-  id: 52,
-  title: "New Product Arie Bagas Azzy Baru ",
-  slug: "new-product-arie-bagas-azzy-baru",
-  price: 10,
-  description: "ini adalah test API manual Arie untuk menambahkan produk",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T06:00:47.000Z",
-  updatedAt: "2026-07-18T06:00:47.000Z"
-  },
-  {
-  id: 54,
-  title: "New Product",
-  slug: "new-product",
-  price: 10,
-  description: "2",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placeimg.com/640/480/any"
-  ],
-  creationAt: "2026-07-18T06:03:04.000Z",
-  updatedAt: "2026-07-18T06:03:04.000Z"
-  },
-  {
-  id: 55,
-  title: "Rajesh",
-  slug: "rajesh",
-  price: 100,
-  description: "A description",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T06:18:55.000Z",
-  updatedAt: "2026-07-18T06:18:55.000Z"
-  },
-  {
-  id: 56,
-  title: "xcv",
-  slug: "xcv",
-  price: 43,
-  description: "ffd",
-  category: {
-  id: 3,
-  name: "Furniture",
-  slug: "furniture",
-  image: "https://i.imgur.com/Qphac99.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T06:20:33.000Z",
-  updatedAt: "2026-07-18T06:20:33.000Z"
-  },
-  {
-  id: 57,
-  title: "Rudra",
-  slug: "rudra",
-  price: 100,
-  description: "A description",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T06:21:23.000Z",
-  updatedAt: "2026-07-18T06:21:23.000Z"
-  },
-  {
-  id: 58,
-  title: "A product",
-  slug: "a-product",
-  price: 1500,
-  description: "A description .... ",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T06:29:55.000Z",
-  updatedAt: "2026-07-18T06:29:55.000Z"
-  },
-  {
-  id: 59,
-  title: "New Product last edition",
-  slug: "new-product-last-edition",
-  price: 110,
-  description: "A description",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placeimg.com/640/480/any"
-  ],
-  creationAt: "2026-07-18T06:59:56.000Z",
-  updatedAt: "2026-07-18T06:59:56.000Z"
-  },
-  {
-  id: 60,
-  title: "9541",
-  slug: "9541",
-  price: 150,
-  description: "A description red one",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T07:01:11.000Z",
-  updatedAt: "2026-07-18T07:01:11.000Z"
-  },
-  {
-  id: 61,
-  title: "tydty",
-  slug: "tydty",
-  price: 450,
-  description: "gdhgejhgd",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T08:15:45.000Z",
-  updatedAt: "2026-07-18T08:15:45.000Z"
-  },
-  {
-  id: 63,
-  title: "table",
-  slug: "table",
-  price: 1500,
-  description: "bjxjg",
-  category: {
-  id: 3,
-  name: "Furniture",
-  slug: "furniture",
-  image: "https://i.imgur.com/Qphac99.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T08:16:52.000Z",
-  updatedAt: "2026-07-18T08:16:52.000Z"
-  },
-  {
-  id: 64,
-  title: "dad",
-  slug: "dad",
-  price: 34,
-  description: "df",
-  category: {
-  id: 3,
-  name: "Furniture",
-  slug: "furniture",
-  image: "https://i.imgur.com/Qphac99.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T08:20:10.000Z",
-  updatedAt: "2026-07-18T08:20:10.000Z"
-  },
-  {
-  id: 65,
-  title: "xcvxc",
-  slug: "xcvxc",
-  price: 43,
-  description: "dfgsd",
-  category: {
-  id: 5,
-  name: "Miscellaneous",
-  slug: "miscellaneous",
-  image: "https://i.imgur.com/BG8J0Fj.jpg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T08:20:55.000Z",
-  updatedAt: "2026-07-18T08:20:55.000Z"
-  },
-  {
-  id: 66,
-  title: "Productx",
-  slug: "productx",
-  price: 67,
-  description: "something",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T08:25:58.000Z",
-  updatedAt: "2026-07-18T08:25:58.000Z"
-  },
-  {
-  id: 67,
-  title: "85992",
-  slug: "85992",
-  price: 150,
-  description: "A description red one",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T09:54:11.000Z",
-  updatedAt: "2026-07-18T09:54:11.000Z"
-  },
-  {
-  id: 68,
-  title: "Product Studio UI Test",
-  slug: "product-studio-ui-test",
-  price: 149000,
-  description: "San pham kiem thu luong tao moi tu giao dien Product Studio.",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/900x700/EEEAFB/6C5CE7?text=Product+image"
-  ],
-  creationAt: "2026-07-18T10:00:03.000Z",
-  updatedAt: "2026-07-18T10:00:03.000Z"
-  },
-  {
-  id: 69,
-  title: "asdad",
-  slug: "asdad",
-  price: 111,
-  description: "asdasdasdasdasdasd",
-  category: {
-  id: 2,
-  name: "Electronics",
-  slug: "electronics",
-  image: "https://i.imgur.com/ZANVnHE.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jax_0.jpg"
-  ],
-  creationAt: "2026-07-18T10:02:08.000Z",
-  updatedAt: "2026-07-18T10:02:08.000Z"
-  },
-  {
-  id: 70,
-  title: "52617",
-  slug: "52617",
-  price: 150,
-  description: "A description red one",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T10:02:40.000Z",
-  updatedAt: "2026-07-18T10:02:40.000Z"
-  },
-  {
-  id: 71,
-  title: "48103",
-  slug: "48103",
-  price: 150,
-  description: "A description red one",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T10:04:47.000Z",
-  updatedAt: "2026-07-18T10:04:47.000Z"
-  },
-  {
-  id: 72,
-  title: "New Cotton Shirt and pant",
-  slug: "new-cotton-shirt-and-pant",
-  price: 1100,
-  description: "Very nice and attractive",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placeimg.com/640/480/cotton"
-  ],
-  creationAt: "2026-07-18T11:03:17.000Z",
-  updatedAt: "2026-07-18T11:03:17.000Z"
-  },
-  {
-  id: 73,
-  title: "Mobile Phones",
-  slug: "mobile-phones",
-  price: 10,
-  description: "A description",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placeimg.com/640/480/any"
-  ],
-  creationAt: "2026-07-18T11:03:18.000Z",
-  updatedAt: "2026-07-18T11:03:18.000Z"
-  },
-  {
-  id: 74,
-  title: "Товар 1784377669078",
-  slug: "1784377669078",
-  price: 1020,
-  description: "A description",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://placehold.co/600x400"
-  ],
-  creationAt: "2026-07-18T12:27:49.000Z",
-  updatedAt: "2026-07-18T12:27:49.000Z"
-  },
-  {
-  id: 83,
-  title: "I know My future is very very very bright",
-  slug: "i-know-my-future-is-very-very-very-bright",
-  price: 10,
-  description: "A description",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://i.imgur.com/QkIa5tT.jpeg"
-  ],
-  creationAt: "2026-07-18T13:57:30.000Z",
-  updatedAt: "2026-07-18T13:57:30.000Z"
-  },
-  {
-  id: 84,
-  title: "IF you know My future is very very very bright",
-  slug: "if-you-know-my-future-is-very-very-very-bright",
-  price: 10,
-  description: "A description",
-  category: {
-  id: 1,
-  name: "Clothes",
-  slug: "clothes",
-  image: "https://i.imgur.com/QkIa5tT.jpeg",
-  creationAt: "2026-07-18T05:33:44.000Z",
-  updatedAt: "2026-07-18T05:33:44.000Z"
-  },
-  images: [
-  "https://i.imgur.com/QkIa5tT.jpeg"
-  ],
-  creationAt: "2026-07-18T14:03:46.000Z",
-  updatedAt: "2026-07-18T14:03:46.000Z"
-  }
+    {
+      "id": 52,
+      "title": "Classic Urban Denim Jacket",
+      "slug": "classic-urban-denim-jacket",
+      "price": 45,
+      "description": "A stylish and durable classic denim jacket built for comfortable everyday wear.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://plus.unsplash.com/premium_photo-1675186049366-64a655f8f537?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T06:00:47.000Z",
+      "updatedAt": "2026-07-18T06:00:47.000Z"
+    },
+    {
+      "id": 54,
+      "title": "Vintage Leather Bomber Jacket",
+      "slug": "vintage-leather-bomber-jacket",
+      "price": 85,
+      "description": "Premium quality vintage leather jacket featuring a soft inner lining and sleek finish.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T06:03:04.000Z",
+      "updatedAt": "2026-07-18T06:03:04.000Z"
+    },
+    {
+      "id": 55,
+      "title": "Casual Minimalist Cotton Hoodie",
+      "slug": "casual-minimalist-cotton-hoodie",
+      "price": 35,
+      "description": "Cozy and breathable cotton hoodie perfect for casual outings and street style.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T06:18:55.000Z",
+      "updatedAt": "2026-07-18T06:18:55.000Z"
+    },
+    {
+      "id": 56,
+      "title": "Modern Scandinavian Armchair",
+      "slug": "modern-scandinavian-armchair",
+      "price": 120,
+      "description": "Elegant accent armchair designed with ergonomic support and premium upholstery.",
+      "category": {
+        "id": 3,
+        "name": "Furniture",
+        "slug": "furniture",
+        "image": "https://i.imgur.com/Qphac99.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://plus.unsplash.com/premium_photo-1670076513880-f58e3c377903?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T06:20:33.000Z",
+      "updatedAt": "2026-07-18T06:20:33.000Z"
+    },
+    {
+      "id": 57,
+      "title": "Oversized Streetwear T-Shirt",
+      "slug": "oversized-streetwear-t-shirt",
+      "price": 25,
+      "description": "100% combed cotton oversized tee featuring a soft hand-feel and relaxed silhouette.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T06:21:23.000Z",
+      "updatedAt": "2026-07-18T06:21:23.000Z"
+    },
+    {
+      "id": 58,
+      "title": "Tailored Slim-Fit Blazer",
+      "slug": "tailored-slim-fit-blazer",
+      "price": 95,
+      "description": "Sophisticated slim-fit blazer suitable for formal occasions and smart-casual wear.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T06:29:55.000Z",
+      "updatedAt": "2026-07-18T06:29:55.000Z"
+    },
+    {
+      "id": 59,
+      "title": "Knit Wool Winter Sweater",
+      "slug": "knit-wool-winter-sweater",
+      "price": 50,
+      "description": "Warm, breathable knit sweater made from ultra-soft wool blend for cold weather.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T06:59:56.000Z",
+      "updatedAt": "2026-07-18T06:59:56.000Z"
+    },
+    {
+      "id": 60,
+      "title": "Athletic Running Sweatpants",
+      "slug": "athletic-running-sweatpants",
+      "price": 30,
+      "description": "Lightweight and stretchy joggers tailored for sports, fitness, and home lounge.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://plus.unsplash.com/premium_photo-1679056835084-7f21e64a3402?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T07:01:11.000Z",
+      "updatedAt": "2026-07-18T07:01:11.000Z"
+    },
+    {
+      "id": 61,
+      "title": "Classic Polo Collar T-Shirt",
+      "slug": "classic-polo-collar-t-shirt",
+      "price": 28,
+      "description": "Timeless collared polo shirt designed with durable stitching and breathable cotton.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T08:15:45.000Z",
+      "updatedAt": "2026-07-18T08:15:45.000Z"
+    },
+    {
+      "id": 63,
+      "title": "Minimalist Wooden Coffee Table",
+      "slug": "minimalist-wooden-coffee-table",
+      "price": 110,
+      "description": "Solid oak wood coffee table featuring clean lines and a smooth natural finish.",
+      "category": {
+        "id": 3,
+        "name": "Furniture",
+        "slug": "furniture",
+        "image": "https://i.imgur.com/Qphac99.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T08:16:52.000Z",
+      "updatedAt": "2026-07-18T08:16:52.000Z"
+    },
+    {
+      "id": 64,
+      "title": "Ergonomic Interior Lounge Chair",
+      "slug": "ergonomic-interior-lounge-chair",
+      "price": 140,
+      "description": "Contemporary living room chair with high-density foam padding for maximum comfort.",
+      "category": {
+        "id": 3,
+        "name": "Furniture",
+        "slug": "furniture",
+        "image": "https://i.imgur.com/Qphac99.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1618220179428-22790b461013?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T08:20:10.000Z",
+      "updatedAt": "2026-07-18T08:20:10.000Z"
+    },
+    {
+      "id": 65,
+      "title": "Aromatic Scented Candle Set",
+      "slug": "aromatic-scented-candle-set",
+      "price": 18,
+      "description": "Handcrafted soy wax scented candles designed to create a relaxing home ambiance.",
+      "category": {
+        "id": 5,
+        "name": "Miscellaneous",
+        "slug": "miscellaneous",
+        "image": "https://i.imgur.com/BG8J0Fj.jpg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T08:20:55.000Z",
+      "updatedAt": "2026-07-18T08:20:55.000Z"
+    },
+    {
+      "id": 66,
+      "title": "Trendy Casual Sneakers",
+      "slug": "trendy-casual-sneakers",
+      "price": 65,
+      "description": "Lightweight daily wear sneakers with shock-absorbing soles and stylish design.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T08:25:58.000Z",
+      "updatedAt": "2026-07-18T08:25:58.000Z"
+    },
+    {
+      "id": 67,
+      "title": "Urban Canvas Backpack",
+      "slug": "urban-canvas-backpack",
+      "price": 40,
+      "description": "Spacious canvas backpack featuring laptop storage compartment and padded shoulder straps.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T09:54:11.000Z",
+      "updatedAt": "2026-07-18T09:54:11.000Z"
+    },
+    {
+      "id": 68,
+      "title": "Minimalist Wrist Watch",
+      "slug": "minimalist-wrist-watch",
+      "price": 99,
+      "description": "Sleek analog watch with genuine leather strap and scratch-resistant glass.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T10:00:03.000Z",
+      "updatedAt": "2026-07-18T10:00:03.000Z"
+    },
+    {
+      "id": 69,
+      "title": "Wireless Noise Cancelling Headphones",
+      "slug": "wireless-noise-cancelling-headphones",
+      "price": 110,
+      "description": "Immersive sound quality with active noise cancellation and 30-hour battery life.",
+      "category": {
+        "id": 2,
+        "name": "Electronics",
+        "slug": "electronics",
+        "image": "https://i.imgur.com/ZANVnHE.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T10:02:08.000Z",
+      "updatedAt": "2026-07-18T10:02:08.000Z"
+    },
+    {
+      "id": 70,
+      "title": "Classic Brown Leather Wallet",
+      "slug": "classic-brown-leather-wallet",
+      "price": 22,
+      "description": "Slim bifold wallet crafted from high-grade leather with RFID blocking technology.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1627123424574-724758594e93?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T10:02:40.000Z",
+      "updatedAt": "2026-07-18T10:02:40.000Z"
+    },
+    {
+      "id": 71,
+      "title": "Polarized UV Protection Sunglasses",
+      "slug": "polarized-uv-protection-sunglasses",
+      "price": 32,
+      "description": "Stylish sunglasses featuring polarized lenses to reduce glare and protect your eyes.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T10:04:47.000Z",
+      "updatedAt": "2026-07-18T10:04:47.000Z"
+    },
+    {
+      "id": 72,
+      "title": "Premium Cotton Shirt & Chino Set",
+      "slug": "premium-cotton-shirt-chino-set",
+      "price": 75,
+      "description": "Matching soft cotton formal shirt and comfortable slim-fit chino trousers.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T11:03:17.000Z",
+      "updatedAt": "2026-07-18T11:03:17.000Z"
+    },
+    {
+      "id": 73,
+      "title": "Flagship Smartphone Case & Stand",
+      "slug": "flagship-smartphone-case-stand",
+      "price": 15,
+      "description": "Protective phone cover with built-in kickstand and matte anti-fingerprint coating.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T11:03:18.000Z",
+      "updatedAt": "2026-07-18T11:03:18.000Z"
+    },
+    {
+      "id": 74,
+      "title": "Winter Woolen Beanie Cap",
+      "slug": "winter-woolen-beanie-cap",
+      "price": 12,
+      "description": "Soft knit beanie hat designed to keep you warm and stylish during cold seasons.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T12:27:49.000Z",
+      "updatedAt": "2026-07-18T12:27:49.000Z"
+    },
+    {
+      "id": 83,
+      "title": "Printed Summer Graphic Tee",
+      "slug": "printed-summer-graphic-tee",
+      "price": 20,
+      "description": "Vibrant graphic printed t-shirt made with soft cotton fabric for modern street style.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T13:57:30.000Z",
+      "updatedAt": "2026-07-18T13:57:30.000Z"
+    },
+    {
+      "id": 84,
+      "title": "Casual Printed Beach Shirt",
+      "slug": "casual-printed-beach-shirt",
+      "price": 24,
+      "description": "Breathable tropical print short-sleeve shirt ideal for beach days and vacations.",
+      "category": {
+        "id": 1,
+        "name": "Clothes",
+        "slug": "clothes",
+        "image": "https://i.imgur.com/QkIa5tT.jpeg",
+        "creationAt": "2026-07-18T05:33:44.000Z",
+        "updatedAt": "2026-07-18T05:33:44.000Z"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500&auto=format&fit=crop&q=60"
+      ],
+      "creationAt": "2026-07-18T14:03:46.000Z",
+      "updatedAt": "2026-07-18T14:03:46.000Z"
+    }
   ]
 
 

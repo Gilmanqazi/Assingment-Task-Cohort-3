@@ -41,29 +41,29 @@ const ProductCard = ({ product }) => {
         />
         {/* Category Badge */}
         {product.category?.name && (
-          <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-gray-800 text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm border border-gray-100">
+          <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-white/90 backdrop-blur-sm text-gray-800 text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full shadow-sm border border-gray-100">
             {product.category.name}
           </span>
         )}
       </div>
 
       {/* Product Details Content */}
-      <div className="flex flex-col flex-1 p-5">
+      <div className="flex flex-col flex-1 p-3 sm:p-5">
         {/* Title */}
-        <h3 className="text-gray-900 font-semibold text-lg leading-snug line-clamp-1 group-hover:text-blue-600 transition-colors">
+        <h3 className="text-gray-900 font-semibold text-sm sm:text-lg leading-snug line-clamp-1 group-hover:text-blue-600 transition-colors">
           {product?.title || "Untitled Product"}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-500 text-sm mt-2 line-clamp-2 flex-1">
+        <p className="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2 line-clamp-2 flex-1">
           {product?.description || "No description available."}
         </p>
 
         {/* Price & Action Button */}
-        <div className="mt-5 pt-4 border-t border-gray-50 flex items-center justify-between gap-4">
+        <div className="mt-3 sm:mt-5 pt-3 sm:pt-4 border-t border-gray-50 flex flex-col xs:flex-row sm:items-center justify-between gap-2 sm:gap-4">
           <div>
-            <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">Price</p>
-            <span className="text-2xl font-bold text-gray-900">
+            <p className="text-[10px] sm:text-xs text-gray-400 font-medium uppercase tracking-wider hidden sm:block">Price</p>
+            <span className="text-lg sm:text-2xl font-bold text-gray-900">
               ₹{formattedPrice.toLocaleString()} 
             </span>
           </div>
@@ -76,7 +76,7 @@ const ProductCard = ({ product }) => {
               }
             }}
             disabled={isAdded}
-            className={`font-medium text-sm px-4 py-2.5 rounded-xl transition-all flex items-center gap-2 ${
+            className={`font-medium text-xs sm:text-sm px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition-all flex items-center justify-center gap-2 ${
               isAdded 
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200' 
                 : 'bg-blue-600 hover:bg-blue-700 active:scale-95 text-white shadow-sm hover:shadow-md'
