@@ -120,6 +120,7 @@ return res.status(200).json({
       id:user._id,
       name:user.name,
       email:user.email,
+      role:user.role
     }
   }
 })
@@ -242,6 +243,7 @@ message:"User Not Found"
           id: user._id,
             email: user.email,
             name: user.name,
+            role:user.role
         }
     }
     })
