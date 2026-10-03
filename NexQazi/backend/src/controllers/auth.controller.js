@@ -103,7 +103,7 @@ const refreshToken = createRefreshToken({
 
 res.cookie("refreshToken",refreshToken,{
   httpOnly:true,
-  secure:false,
+  secure:true,
   sameSite:"strict",
   maxAge: 7 * 24 * 60 * 60 * 1000
 })
@@ -162,7 +162,7 @@ if (!user || refreshToken !== user.refreshToken) {
   
   res.clearCookie("refreshToken", {
     httpOnly: true,
-    secure:false,
+    secure:true,
     sameSite: "strict",
   });
 
@@ -187,7 +187,7 @@ await userModel.findByIdAndUpdate(user._id,{
 
 res.cookie("refreshToken", newRefreshToken, {
   httpOnly: true,
-  secure:false,
+  secure:true,
   sameSite:"strict",
   maxAge: 7 * 24 * 60 * 60 * 1000
 })
@@ -210,7 +210,7 @@ data:{
 
     res.clearCookie("refreshToken", {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "strict",
     });
 
@@ -264,7 +264,7 @@ export const logOutController = async (req,res)=>{
     if(!refreshToken){
       res.clearCookie("refreshToken",{
         httpOnly:true,
-        secure:false,
+        secure:true,
         sameSite:"strict"
       });
       return res.status(200).json({
@@ -280,7 +280,7 @@ export const logOutController = async (req,res)=>{
 
     res.clearCookie("refreshToken",refreshToken,{
       httpOnly:true,
-      secure:false,
+      secure:true,
       sameSite:"strict"
     })
     
