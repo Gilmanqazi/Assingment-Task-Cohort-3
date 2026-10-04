@@ -1,30 +1,40 @@
+import express from "express";
 import cookieParser from "cookie-parser";
-import express from "express"
 import morgan from "morgan";
+import cors from "cors";
 import connectToDB from "./config/database.js";
 import authRouter from "./routers/auth.route.js";
-import productRouter from "./routers/product.route.js"
-import addToCartRouter from "./routers/addToCart.route.js"
-import cors from "cors"
-const app = express()
+import productRouter from "./routers/product.route.js";
+import addToCartRouter from "./routers/addToCart.route.js";
 
-connectToDB()
-
-app.use(express.json())
-
-app.use(cors({
-  origin:"http://localhost:5173",
-  credentials:true,
-  methods:["POST","GET","DELETE","PUT"]
-}))
-
-app.use(morgan("dev"))
-
-app.use(cookieParser())
+const app = express();
 
 
-app.use("/api/auth",authRouter)
-app.use("/api",productRouter)
-app.use("/api/cart",addToCartRouter)
+connectToDB();
+
+
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(morgan("dev"));
+
+
+app.get("/", (req, res) => {
+  res.status(200).send("Server is running successfully");
+});
+
+
+app.use("/api/auth", authRouter);
+app.use("/api", productRouter);
+app.use("/api/cart", addToCartRouter);
 
 export default app;
