@@ -101,10 +101,12 @@ const refreshToken = createRefreshToken({
   role:user.role
 })
 
+const isProduction = process.env.NODE_ENV === "production";
+
 res.cookie("refreshToken",refreshToken,{
   httpOnly:true,
-  secure:true,
-  sameSite:"strict",
+  secure:isProduction,
+  sameSite:isProduction ? "none" : "lax",
   maxAge: 7 * 24 * 60 * 60 * 1000
 })
 
@@ -160,11 +162,16 @@ if (!user || refreshToken !== user.refreshToken) {
   }
 
   
-  res.clearCookie("refreshToken", {
-    httpOnly: true,
-    secure:true,
-    sameSite: "strict",
-  });
+  const getCookieOptions = () => {
+    const isProduction = process.env.NODE_ENV === "production";
+    return {
+      httpOnly: true,
+      secure: isProduction ? true : false,
+      sameSite: isProduction ? "none" : "lax",
+    };
+  };
+  
+  res.clearCookie("refreshToken", getCookieOptions());
 
   return res.status(403).json({
     success: false,
@@ -185,10 +192,12 @@ await userModel.findByIdAndUpdate(user._id,{
   refreshToken:newRefreshToken
 })
 
+const isProduction = process.env.NODE_ENV === "production";
+
 res.cookie("refreshToken", newRefreshToken, {
   httpOnly: true,
-  secure:true,
-  sameSite:"strict",
+  secure:isProduction,
+  sameSite:isProduction ? "none" : "lax",
   maxAge: 7 * 24 * 60 * 60 * 1000
 })
 
@@ -261,11 +270,12 @@ export const logOutController = async (req,res)=>{
 
     const refreshToken = req.cookies?.refreshToken
 
+    const isProduction = process.env.NODE_ENV === "production";
     if(!refreshToken){
       res.clearCookie("refreshToken",{
         httpOnly:true,
-        secure:true,
-        sameSite:"strict"
+        secure:isProduction,
+        sameSite:isProduction ? "none" : "lax"
       });
       return res.status(200).json({
         success: true,
@@ -278,11 +288,16 @@ export const logOutController = async (req,res)=>{
       {refreshToken:null}
     )
 
-    res.clearCookie("refreshToken",refreshToken,{
-      httpOnly:true,
-      secure:true,
-      sameSite:"strict"
-    })
+    const getCookieOptions = () => {
+      const isProduction = process.env.NODE_ENV === "production";
+      return {
+        httpOnly: true,
+        secure: isProduction ? true : false,
+        sameSite: isProduction ? "none" : "lax",
+      };
+    };
+
+    res.clearCookie("refreshToken", getCookieOptions());
     
     return res.status(200).json({
       success: true,
