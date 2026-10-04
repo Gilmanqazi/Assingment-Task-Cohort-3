@@ -1,6 +1,6 @@
 import {useAuth} from "../../hook/useAuth";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 
@@ -194,6 +194,16 @@ toast.success(`Welcome ${data.name}`)
           </button>
 
         </form>
+
+        <p className="text-center text-gray-600 text-sm mt-6">
+          Already have an account?{" "}
+          <Link
+            to="/"
+            className="text-black font-semibold hover:underline"
+          >
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );

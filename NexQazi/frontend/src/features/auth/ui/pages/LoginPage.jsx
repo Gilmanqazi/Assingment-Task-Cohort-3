@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hook/useAuth";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const LoginPage = () => {
   // 1. Extract isSubmitting directly from react-hook-form
@@ -84,7 +84,6 @@ const LoginPage = () => {
             )}
           </div>
 
-          {/* Submit Button controlled by form's local isSubmitting */}
           <button
             type="submit"
             disabled={isSubmitting}
@@ -93,6 +92,16 @@ const LoginPage = () => {
             {isSubmitting ? "Logging in..." : "Login"}
           </button>
         </form>
+
+        <p className="text-center text-gray-600 text-sm mt-6">
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            className="text-black font-semibold hover:underline"
+          >
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );
