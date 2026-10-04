@@ -1,27 +1,31 @@
 import mongoose from "mongoose";
 import CONFIG from "./config.js";
 
-// Connection state track karne ke liye global variable
-let isConnected = false;
+let cachedPromise = null;
 
 const connectToDB = async () => {
-  // Agar pehle se connect hai toh wahi connection reuse karo
-  if (isConnected && mongoose.connection.readyState === 1) {
-    return;
+
+  if (mongoose.connection.readyState === 1) {
+    return mongoose.connection;
+  }
+
+  if (!cachedPromise) {
+    cachedPromise = mongoose.connect(CONFIG.MONGO_URI, {
+      serverSelectionTimeoutMS: 30000, 
+      connectTimeoutMS: 30000,
+    });
   }
 
   try {
-    const db = await mongoose.connect(CONFIG.MONGO_URI, {
-      bufferCommands: false, 
-      serverSelectionTimeoutMS: 5000, 
-    });
-
-    isConnected = db.connections[0].readyState === 1;
+    await cachedPromise;
     console.log("Connected to MongoDB");
   } catch (error) {
-    console.log("Error while connecting mongoDB:", error.message || error);
-    isConnected = false;
+    cachedPromise = null; 
+    console.error("MongoDB Connection Error:", error.message || error);
+    throw error;
   }
+
+  return mongoose.connection;
 };
 
 export default connectToDB;

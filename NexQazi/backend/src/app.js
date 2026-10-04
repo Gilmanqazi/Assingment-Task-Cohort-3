@@ -27,6 +27,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 
+app.use(async (req, res, next) => {
+  try {
+    await connectToDB();
+    next();
+  } catch (err) {
+    res.status(500).json({ message: "Database connection failure", error: err.message });
+  }
+});
+
 
 app.get("/", (req, res) => {
   res.status(200).send("Server is running successfully");
